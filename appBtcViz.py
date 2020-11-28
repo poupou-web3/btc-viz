@@ -3,12 +3,32 @@
 @author: btc-viz
 """
 
-#%% import packages
+# %% import packages
 import streamlit as st
 
-#%% the GUI
-st.title("Bitcoin visualization")
+from src.pages.mayer.historical import page_mayer_historical
+from src.pages.mayer.multiple import page_mayer_multiple
 
-st.info(
-    """ By: [Btc-viz](https://github.com/crypto-viz) | Code source: [GitHub](https://github.com/crypto-viz/btc-viz) """
-)
+PAGES = ['Mayer Multiple', 'Historical comparison']
+
+
+def main():
+    # %% the GUI
+    st.title('Bitcoin visualization')
+
+    page = st.sidebar.selectbox(label="Page",
+                                options=PAGES)
+
+    if page == 'Mayer Multiple':
+        page_mayer_multiple()
+    else:
+        page_mayer_historical()
+    st.info(
+        """ By: [Btc-viz](https://github.com/crypto-viz) | 
+        Code Source: [GitHub](https://github.com/crypto-viz/btc-viz) |
+        Data Powered by [CoinDesk](https://www.coindesk.com/price/bitcoin)"""
+    )
+
+
+if __name__ == "__main__":
+    main()
