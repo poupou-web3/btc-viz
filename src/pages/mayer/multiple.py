@@ -36,8 +36,8 @@ def page_mayer_multiple():
     df_btc_daily = series_daily.reset_index()
     df_btc_daily.set_axis(['Date', 'Open'], axis=1, inplace=True)
 
-    df_btc_daily['200WmaOpen'] = df_btc_daily['Open'].rolling(window=200).mean()
-    df_btc_daily['Mayer'] = df_btc_daily['Open'] / df_btc_daily['200WmaOpen']
+    df_btc_daily['200MaOpen'] = df_btc_daily['Open'].rolling(window=200).mean()
+    df_btc_daily['Mayer'] = df_btc_daily['Open'] / df_btc_daily['200MaOpen']
 
     mayer_mean = df_btc_daily['Mayer'].mean()
     mayer_today = df_btc_daily.dropna().loc[len(df_btc_daily) - 1, 'Mayer']

@@ -18,10 +18,10 @@ def page_mayer_historical():
     df_btc_daily.set_axis(['Currency', 'Date', 'Close', 'Open', 'High', 'Low'], axis=1, inplace=True)
     df_btc_daily['Date'] = pd.to_datetime(df_btc_daily['Date'])
 
-    df_btc_daily['200WmaOpen'] = df_btc_daily['Open'].rolling(window=200).mean()
-    df_btc_daily['200WmaLow'] = df_btc_daily['Low'].rolling(window=200).mean()
-    df_btc_daily['200WmaHigh'] = df_btc_daily['High'].rolling(window=200).mean()
-    df_btc_daily['Mayer'] = df_btc_daily['Open'] / df_btc_daily['200WmaOpen']
+    df_btc_daily['200MaOpen'] = df_btc_daily['Open'].rolling(window=200).mean()
+    df_btc_daily['200MaLow'] = df_btc_daily['Low'].rolling(window=200).mean()
+    df_btc_daily['200MaHigh'] = df_btc_daily['High'].rolling(window=200).mean()
+    df_btc_daily['Mayer'] = df_btc_daily['Open'] / df_btc_daily['200MaOpen']
 
     fig_wma_comp = plot_wma_comparison(df_btc_daily)
     st.write(fig_wma_comp)
