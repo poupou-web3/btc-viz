@@ -46,5 +46,9 @@ def page_mayer_multiple():
 
     st.write(plot_current_multiple(df_btc_daily))
 
+    st.write('Today, the 200 days moving average is **${}** and the btc price is **${}**'
+             .format(round(df_btc_daily.dropna().loc[len(df_btc_daily) - 1, '200MaOpen'], 1),
+                     round(df_btc_daily.dropna().loc[len(df_btc_daily) - 1, 'Open']), 1))
+
     st.write('Today, the mayer multiple is **{}**, the average multiple is _{}_, the multiple has been '
              'higher **{}**% of the time'.format(mayer_today.round(2), mayer_mean.round(2), mayer_percent.round(2)))
