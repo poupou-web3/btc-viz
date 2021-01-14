@@ -1,8 +1,7 @@
-import pandas as pd
-from datetime import date
 import streamlit as st
 
 from src.plot.plotly import plot_wma_comparison
+from src.prep.csv.loading import load_historical_data
 
 
 def page_mayer_historical():
@@ -13,10 +12,7 @@ def page_mayer_historical():
              'average of bitcoin price and the current price.\n'
              'We study the impact of the daily price chosen (high, low, open) on the multiple.')
 
-    df_btc_daily = pd.read_csv('Data/BTC_USD_2013-10-01_2020-11-28-CoinDesk.csv')
-    df_btc_daily = df_btc_daily
-    df_btc_daily.set_axis(['Currency', 'Date', 'Close', 'Open', 'High', 'Low'], axis=1, inplace=True)
-    df_btc_daily['Date'] = pd.to_datetime(df_btc_daily['Date'])
+    df_btc_daily = load_historical_data()
 
     df_btc_daily['200MaOpen'] = df_btc_daily['Open'].rolling(window=200).mean()
     df_btc_daily['200MaLow'] = df_btc_daily['Low'].rolling(window=200).mean()
