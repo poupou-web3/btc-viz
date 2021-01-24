@@ -44,3 +44,13 @@ def plot_current_multiple(df_btc_daily):
                   secondary_y=True)
     fig.update_layout(title='Mayer multiple, Bitcoin price in logarithmic scale and 200 days MA')
     return fig
+
+
+def plot_simulation(mayer_values, btc_quantity):
+    fig = go.Figure(data=go.Scatter(x=mayer_values, y=btc_quantity,
+                                    mode='lines+markers',
+                                    name='lines+markers'))
+    fig.update_layout(title='Mayer Multiple Simulation',
+                      xaxis_title='Mayer Multiple Threshold',
+                      yaxis_title='Bitcoin Accumulated')
+    return fig
