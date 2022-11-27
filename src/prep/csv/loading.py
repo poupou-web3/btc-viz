@@ -8,7 +8,7 @@ COINDESK_HISTORICAL_URL = 'https://api.coindesk.com/v1/bpi/historical/open.json'
 COINDESK_CURRENT_URL = 'https://api.coindesk.com/v1/bpi/currentprice.json'
 
 
-@st.cache()
+@st.cache(allow_output_mutation=True)
 def load_historical_data():
     df_btc_daily = pd.read_csv('Data/BTC_USD_2010-07-18_Investing.csv')
     df_btc_daily.set_axis(['Date', 'Price', 'Open', 'High', 'Low', 'Volume', 'Change'], axis=1, inplace=True)

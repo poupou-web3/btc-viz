@@ -27,8 +27,8 @@ def main():
     else:
         page_mayer_historical()
     st.info(
-        """ By: [Btc-viz](https://github.com/crypto-viz) | 
-        Code Source: [GitHub](https://github.com/crypto-viz/btc-viz) |
+        """ By: [Poupou](https://github.com/poupou-web3) | 
+        Code Source: [GitHub](https://github.com/poupou-web3/btc-viz) |
         Data Powered by [CoinDesk](https://www.coindesk.com/price/bitcoin)"""
     )
 
