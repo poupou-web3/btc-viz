@@ -53,12 +53,12 @@ def get_btc_daily():
     df_btc_history = load_historical_data()
     df_btc_history = df_btc_history[['Date', 'Open']]
 
-    df_btc_daily = load_coindesk_data()
+    # df_btc_daily = load_coindesk_data()
 
-    df_btc_daily = df_btc_history.append(df_btc_daily.loc[df_btc_history['Date'] > datetime.datetime.strptime('2022/11/27', "%Y/%m/%d")])
+    # df_btc_daily = df_btc_history.append(df_btc_daily.loc[df_btc_history['Date'] > datetime.datetime.strptime('2022/11/27', "%Y/%m/%d")])
 
     # remove values before January 2012
-    df_btc_daily = df_btc_daily.loc[df_btc_daily['Date'] >= datetime.datetime.strptime('2012/01/01', "%Y/%m/%d")]
+    df_btc_daily = df_btc_history.loc[df_btc_history['Date'] >= datetime.datetime.strptime('2012/01/01', "%Y/%m/%d")]
 
     df_btc_daily['200MaOpen'] = df_btc_daily['Open'].rolling(window=200).mean()
     df_btc_daily['Mayer'] = df_btc_daily['Open'] / df_btc_daily['200MaOpen']
